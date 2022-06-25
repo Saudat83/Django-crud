@@ -3,27 +3,25 @@ from django.views.generic.edit import CreateView
 from django.views.generic.edit import DeleteView
 from django.views.generic.edit import UpdateView
 from django.views.generic.edit import ListView
-
-from .models import blogApp
-
-class blogAppListView(ListView):
-    model = Post
-
-class blogCreateView(CreateView):
-    model = Post
-    fields = "--all--"
-    success_url = reverse_lazy("blog:all")
-
-class blogAppDetailView(DetailView):
-    model = Post
-
-class blogDeleteView(DeleteView):
-    model = Post
-    fields = "--all--"
-    success_url = reverse_lazy("blog:all")
-
-
-
-
+from django.views.generic.edit import DeleteView
+from django.views.generic.edit import DetailView
+from django.urls import reverse_lazy
+from .models import Post
 
 # Create your views here.
+
+class PostAppListView(ListView):
+    model = Post
+
+class PostCreateView(CreateView):
+    model = Post
+    fields = ["--all--"]
+    success_url = reverse_lazy("blog:all")
+
+class PostAppDetailView(DetailView):
+    model = Post
+
+class PostDeleteView(DeleteView):
+    model = Post
+    fields = ["--all--"]
+    success_url = reverse_lazy("blog:all")
